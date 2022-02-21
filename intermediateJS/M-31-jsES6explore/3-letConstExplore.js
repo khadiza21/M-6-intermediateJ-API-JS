@@ -1,4 +1,5 @@
 // variable
+//var now reject for me
 //let
 let num1 = 12;
 num1 = 23;
