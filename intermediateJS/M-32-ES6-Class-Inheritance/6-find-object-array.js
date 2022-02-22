@@ -1,7 +1,7 @@
 // 6-find-object-array.js
 const friends = ["khadiza", "taina", "tanha", "bk", "tani", "abdur rahman"];
 
-const friendsLength = friends.find((friend) => friend.length > 6);
+const friendsLength = friends.find((friend) => friend.length == 6);
 console.log(friendsLength);
 
 const products = [
@@ -14,12 +14,12 @@ const products = [
   { productName: "bags", price: 260, color: "black", quantity: 12 },
 ];
 
-const productName = products.find((pN) => pN.productName == "mobile");
+const productName = products.find((pN) => pN.productName == "books");
 console.log(productName);
 console.log(
   "............................................................................"
 );
 const productPriceOFF = products.find(
-  (pN) => pN.price - (pN.price * 20) / 100 < 1000
+  (pN) => pN.price - (pN.price * 20) / 100 == 1000
 );
 console.log(productPriceOFF);
