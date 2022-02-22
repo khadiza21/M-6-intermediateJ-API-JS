@@ -19,7 +19,16 @@ console.log(phone, dress);
 const company = {
   name: "GP",
   ceo: { name: "bk", id: 23, food: "fuchka" },
-  web: { work: "web development", employee: 33, framework: "react" },
+  web: {
+    work: "web development",
+    employee: 33,
+    framework: "react",
+    tech: {
+      first: "html",
+      second: "CSS",
+      third: "JS",
+    },
+  },
 };
 
 // const work = company.ceo.food;
