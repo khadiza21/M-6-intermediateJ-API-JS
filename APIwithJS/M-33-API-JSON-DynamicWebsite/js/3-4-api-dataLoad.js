@@ -10,9 +10,15 @@ function loadApiUsers() {
 }
 function loadApiComments() {
   fetch("https://jsonplaceholder.typicode.com/photos")
-  .then(pic => pic.json())
-  .then(picshow => console.log(picshow))
+    .then((pic) => pic.json())
+    .then((picshow) => console.log(picshow));
 }
-function displayusers(data){
-  console.log(data);
+function displayusers(data) {
+  const ul = document.getElementById("users");
+  for (const user of data) {
+    // console.log(user.email);
+    const li = document.createElement("li");
+    li.innerText = `Name: ${user.name}     Email: ${user.email}`;
+    ul.appendChild(li);
+  }
 }
