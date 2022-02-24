@@ -6,7 +6,7 @@ function loadQuotes() {
 }
 
 const displayQuote = (quote) => {
-//   console.log(quote.quote);
-const quoteElement = document.getElementById('quote');
-quoteElement.innerText = quote.quote;
+  //   console.log(quote.quote);
+  const quoteElement = document.getElementById("quote");
+  quoteElement.innerText = quote.quote;
 };
