@@ -24,14 +24,19 @@ const displayCountries = (countries) => {
     const div = document.createElement("div");
     div.classList.add("country");
 
-    console.log(country.name.common);
-    const h3 = document.createElement("h3");
-    h3.innerText = country.name.common;
-    div.appendChild(h3);
+    div.innerHTML = `
+    <h3>${country.name.common}</h3>
+    <p>${country.altSpellings[1]}</p>
+    `;
 
-    const p = document.createElement("p");
-    p.innerText = country.altSpellings[1];
-    div.appendChild(p);
+    console.log(country.name.common);
+    // const h3 = document.createElement("h3");
+    // h3.innerText = country.name.common;
+    // div.appendChild(h3);
+
+    // const p = document.createElement("p");
+    // p.innerText = country.altSpellings[1];
+    // div.appendChild(p);
     countriesDiv.appendChild(div);
   });
 };
