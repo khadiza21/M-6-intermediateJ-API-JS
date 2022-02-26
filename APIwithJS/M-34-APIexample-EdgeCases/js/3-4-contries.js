@@ -10,33 +10,38 @@ const displayCountries = (countries) => {
   const countriesDiv = document.getElementById("countries");
 
   countries.forEach((country) => {
-    //  const div = document.createElement("div");
-    // div.classList.add("country");
-
-    // div.innerHTML = `
-    // <h3>${country.name.common}</h3>
-    // <p>${country.altSpellings[1]}</p>
-    // <h5>${country.area}</h5>
-    // `;
-
-    // countriesDiv.appendChild(div);
-
     const div = document.createElement("div");
-    div.classList.add("country");
+    //div.classList.add("country");
+    div.setAttribute("class", "country");
 
     div.innerHTML = `
     <h3>${country.name.common}</h3>
     <p>${country.altSpellings[1]}</p>
+    <button onclick="loadCountryByName('${country.name.common}')"> Detalis </button>
     `;
-
-    console.log(country.name.common);
-    // const h3 = document.createElement("h3");
-    // h3.innerText = country.name.common;
-    // div.appendChild(h3);
-
+    //
     // const p = document.createElement("p");
     // p.innerText = country.altSpellings[1];
     // div.appendChild(p);
     countriesDiv.appendChild(div);
   });
+};
+
+const loadCountryByName = (name) => {
+  console.log(name);
+  const url = `https://restcountries.com/v3.1/name/${name}`;
+  console.log(url);
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => displayCountryDetail(data[0]));
+};
+
+const displayCountryDetail = (country) => {
+  console.log(country);
+  const countryDiv = document.getElementById("country-detail");
+  countryDiv.innerHTML = ` <h5>${country.name.common}</h5>
+  <p> Population: ${country.population}</p>
+  <img src='${country.flags.png}'>
+  `;
+  console.log(country.flags.png);
 };
