@@ -2,22 +2,33 @@ const searchFood = () => {
   const searchField = document.getElementById("search-field");
   const searchText = searchField.value;
 
+  //   clear data
   searchField.value = "";
-  const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`;
+  if (searchText == "") {
+    //   please write something to display
+    alert("please write something to display");
+  } else {
+    //   load data
+    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`;
 
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => displaySearchResult(data.meals));
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => displaySearchResult(data.meals));
+  }
 };
 
 const displaySearchResult = (meals) => {
-  //console.log(meals)
   const searchResult = document.getElementById("search-result");
-  meals.forEach((meal) => {
-    // console.log(meal);
-    const div = document.createElement("div");
-    div.classList.add("col");
-    div.innerHTML = `
+  // searchResult.innerHTML = '';
+  searchResult.textContent = "";
+  // if (meals.length < 1) {
+  //   //show no result found
+  //   console.log("no result found");
+  // } 
+    meals.forEach((meal) => {
+      const div = document.createElement("div");
+      div.classList.add("col");
+      div.innerHTML = `
     <div onclick="loadMealDetail(${meal.idMeal})"  class="card">
     <img src="${
       meal.strMealThumb
@@ -27,8 +38,9 @@ const displaySearchResult = (meals) => {
       <p class="card-text">${meal.strInstructions.slice(0, 200)}</p>
     </div>
   </div>`;
-    searchResult.appendChild(div);
-  });
+      searchResult.appendChild(div);
+    });
+  
 };
 
 const loadMealDetail = (mealID) => {
